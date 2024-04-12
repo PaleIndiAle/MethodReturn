@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Schema;
 
 namespace MethodReturn
 {
@@ -35,6 +36,8 @@ namespace MethodReturn
            
             Add(num1, num2);
 
+            int answer = Add(num1, num2);
+            q1Output.Text = $"{num1} + {num2} = {answer}";
 
 
             /// 2.  Get values for question 2 and call the Area method. 
@@ -47,8 +50,11 @@ namespace MethodReturn
             /// 
             /// Input: 6, 2
             /// The area is 18 units squared
+            int length = Convert.ToInt32(lengthInput.Text);
+            int width = Convert.ToInt32(widthInput.Text);
 
-
+            int areaAnswer = GetArea(length, width);
+            q2Output.Text = $"The area is {areaAnswer} units squared";
 
             /// 3.  Get a value for question 3 and call the PrintPrice 
             /// method. Accept the returned value and then display it.
@@ -63,7 +69,7 @@ namespace MethodReturn
             /// 
             /// Input: 200
             /// The total price is $100.00
-
+            int copies = Convert.ToInt32(copiesInput.Text);
 
 
         }
@@ -72,11 +78,10 @@ namespace MethodReturn
         /// parameters, (x and y), adds them together, and then 
         /// returns the result back to the method call.       
 
-        public void Add(int x, int y)
+        public int Add(int x, int y)
         {
             int sum = x + y;
-
-            q1Output.Text = $"{x} + {y} = {sum}";
+            return sum;
         }
 
 
@@ -84,7 +89,11 @@ namespace MethodReturn
         /// parameters, (x and y), uses them to determine the 
         /// area of a rectangle , and then returns the result 
         /// back to the method call.
-
+        public int GetArea(int length, int width)
+        {
+            int area = length * width;
+            return area;
+        }
 
 
         /// 3. Create a method called PrintPrice, that accepts 1 
@@ -97,7 +106,9 @@ namespace MethodReturn
         /// 11 - 50 prints:  $0.75/print
         /// 51 - 100 prints:  $0.65/print
         /// 101 or over:  $0.50/print
+        public int TotalPrice(int copies)
+        {
 
-
+        }
     }
 }
